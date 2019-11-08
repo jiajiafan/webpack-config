@@ -1,0 +1,6 @@
+## ignore this file ##
+.yarn.lock
+.vscode
+node_modules/
+dist/
+dll/

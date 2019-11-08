@@ -1,0 +1,94 @@
+//webpack 默认支持模块的写法， commonjs 规范 node规范
+//webpack-cli 解析用户传递的参数
+//把模块打包，解析出浏览器可以识别的代码
+
+// npx 是默认找mode_module/.bin目录下的文件来执行
+npx npm 5.2之后出来的
+//两个模式 开发环境，生产环境
+// --mode 传入
+
+// webpcak 配置文件默认叫webpack.config.js或webpack.file.js
+//webpack-merge 主要用来合并配置文件
+ 如果是开发环境，要使用webpack-dev-server
+
+//webpack-dev-server 是在内存中打包的，不会产生实体文件
+
+
+//先解析css
+1---解析css需要两个loader,css-loader ,style-loader;
+css-loader 会解析css语法，解析后的结果会传给style-loader；
+style-loader会将解析后的语法插入style标签
+loader的执行顺序是从下往上执行，从右往左执行
+
+2---预处理器
+.sass node-sass sass-loader
+.less less less-loader
+.stylus stylus stylus.loader
+
+3---增加前缀loader
+postcss-loader
+配合插件 autoprefixer
+需要增加文件postcss.config.js
+
+4.--生产环境，提取css，提高渲染速度
+mini-css-extract-plugin 既可以当做loader
+也可以当做plugin;
+
+// 图片+icon
+1---file-loader默认的功能是拷贝的功能
+
+2---url-loader
+普通图片转base64，会变得更大些，但是可以不用发送请求
+
+
+//js
+es6-es5 api,装饰器，类的属性
+vue-cli 基于babel6实现的
+现在是babel7
+
+默认会调用@babel/core会转化代码 ，转化的时候需要用@babel/preset-env 转化成es5
+@babel/core @babel/preset-env babel-loader
+
+webpack优化：代码分割，删除无用代码，
+
+安装 webpack 
+webpack-cli 解析命令行参数
+webpack-dev-server
+
+html-webpack-plugin:打包html的
+
+sass-loader:node-sass;
+post-css-loader:配合autoprefixer插件使用，需要增加文件postcss.config.js
+css-loader :解析css语法的，解析后的css会传给style-loader
+style-css：style-loader会将解析后的语法插入style标签
+mini-css-extract-plugin ：抽离出css,提高页面渲染速度
+
+
+@babel-loader 默认会调用@babel/core
+@babel/core 
+@babel/preset-env：es6->es5
+
+ 
+clear-webpack-plugin清除dist目录
+
+优化：
+css: purgecss-webpack-plugin:清除无用的css
+
+img: image-webpack-loader :降低图片分辨率 配合file-loader 
+
+tree-shaking 默认只支持es6语法 ，只在生产环境有用；静态导入，
+作用域提升
+
+dllplugin 动态链接库增加打包速度
+打包第三方库
+
+sideEffects :false  移除副作用；
+副作用就是无用的代码，比如一个console
+
+import()可以实现模块分割；
+原理就是webpack会默认吧import()这样的语法另外打包成一个文件，使用的时候会使用jsonp动态导入
+
+
+
+
+
